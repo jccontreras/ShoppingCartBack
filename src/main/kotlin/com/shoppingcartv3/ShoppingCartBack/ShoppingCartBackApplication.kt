@@ -23,8 +23,8 @@ class ShoppingCartBackApplication: CommandLineRunner {
 	override fun run(vararg args: String?) {
 		//Inician con 3 datos en productos en base de Datos
 		val product1 = Product("laptop", 123, "Asus Core i7")
-		val product2 = Product("Celular", 123, "Xiaomi 10 pro")
-		val product3 = Product("TV", 123, "SmartTv LG UHD")
+		val product2 = Product("Celular", 456, "Xiaomi 10 pro")
+		val product3 = Product("TV", 789, "SmartTv LG UHD")
 		productRepository!!.save(product1)
 		productRepository!!.save(product2)
 		productRepository!!.save(product3)
