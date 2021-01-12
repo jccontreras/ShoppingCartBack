@@ -23,6 +23,7 @@ class ProductCartRestController {
     val productCartBusiness: IProductCartBusiness? = null
 
     //Call to DB for load all Product Cart list
+    @CrossOrigin
     @GetMapping("")
     fun list(): ResponseEntity<List<Product_Cart>> {
         return try {
@@ -33,6 +34,7 @@ class ProductCartRestController {
     }
 
     //Call to DB for load a Product Cart
+    @CrossOrigin
     @GetMapping("/{idP}/{idC}")
     fun load(@PathVariable("idP") idProduct: Long, @PathVariable("idC") idCart: Long): ResponseEntity<List<Product_Cart>> {
         return try {
@@ -45,6 +47,7 @@ class ProductCartRestController {
     }
 
     //Call to DB for save a Product cart
+    @CrossOrigin
     @PostMapping("")
     fun insert(@RequestBody productCart: Product_Cart): ResponseEntity<Any> {
         return try {
@@ -58,6 +61,7 @@ class ProductCartRestController {
     }
 
     //Call to DB for update a Product Cart
+    @CrossOrigin
     @PutMapping("")
     fun update(@RequestBody productCart: Product_Cart): ResponseEntity<Any> {
         return try {
@@ -68,7 +72,8 @@ class ProductCartRestController {
         }
     }
 
-    //Call to DB for delete a Product Cart
+    //Call to DB for delete a Product Cart@CrossOrigin
+    @CrossOrigin
     @DeleteMapping("/{idP}/{idC}")
     fun delete(@PathVariable("idP") idProduct: Long, @PathVariable("idC") idCart: Long): ResponseEntity<Any> {
         return try {

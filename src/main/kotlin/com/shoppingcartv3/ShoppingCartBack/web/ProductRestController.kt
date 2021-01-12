@@ -23,6 +23,7 @@ class ProductRestController {
     val productBusiness: IProductBusiness? = null
 
     //Call to DB for load all Product list
+    @CrossOrigin
     @GetMapping("")
     fun list(): ResponseEntity<List<Product>> {
         return try {
@@ -33,6 +34,7 @@ class ProductRestController {
     }
 
     //Call to DB for load a Product
+    @CrossOrigin
     @GetMapping("/{id}")
     fun load(@PathVariable("id") idProduct: Long): ResponseEntity<Product> {
         return try {
@@ -45,6 +47,7 @@ class ProductRestController {
     }
 
     //Call to DB for save a Product
+    @CrossOrigin
     @PostMapping("")
     fun insert(@RequestBody product: Product): ResponseEntity<Any> {
         return try {
@@ -58,6 +61,7 @@ class ProductRestController {
     }
 
     //Call to DB for update a Product
+    @CrossOrigin
     @PutMapping("")
     fun update(@RequestBody product: Product): ResponseEntity<Any> {
         return try {
@@ -68,7 +72,8 @@ class ProductRestController {
         }
     }
 
-    //Call to DB for delete a Product
+    //Call to DB for delete a Product@CrossOrigin
+    @CrossOrigin
     @DeleteMapping("{id}")
     fun delete(@PathVariable("id") idProduct: Long): ResponseEntity<Any> {
         return try {
