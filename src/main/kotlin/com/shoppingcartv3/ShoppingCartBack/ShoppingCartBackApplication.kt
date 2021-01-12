@@ -16,17 +16,22 @@ class ShoppingCartBackApplication: CommandLineRunner {
 
 	@Autowired
 	val productRepository: ProductRepository? = null
-	@Autowired
-	val cartRepository: CartRepository? = null
-	@Autowired
-	val productCarRepository: ProductCartRepository? = null
+	/*@Autowired
+	val cartRepository: CartRepository? = null*/
+	/*@Autowired
+	val productCarRepository: ProductCartRepository? = null*/
 	override fun run(vararg args: String?) {
+		//Inician con 3 datos en productos en base de Datos
 		val product1 = Product("laptop", 123, "Asus Core i7")
+		val product2 = Product("Celular", 123, "Xiaomi 10 pro")
+		val product3 = Product("TV", 123, "SmartTv LG UHD")
 		productRepository!!.save(product1)
-		val cart1 = Cart("pending")
-		cartRepository!!.save(cart1)
-		val productcart1 = Product_Cart(1, 1, 0)
-		productCarRepository!!.save(productcart1)
+		productRepository!!.save(product2)
+		productRepository!!.save(product3)
+		/*val cart1 = Cart("pending")
+		cartRepository!!.save(cart1)*/
+		/*val productcart1 = Product_Cart(1, 1, 0)
+		productCarRepository!!.save(productcart1)*/
 	}
 
 }

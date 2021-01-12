@@ -1,9 +1,12 @@
 package com.shoppingcartv3.ShoppingCartBack.business.productcart
 
 import com.shoppingcartv3.ShoppingCartBack.dao.ProductCartRepository
+import com.shoppingcartv3.ShoppingCartBack.dao.ProductRepository
 import com.shoppingcartv3.ShoppingCartBack.exception.BusinessException
 import com.shoppingcartv3.ShoppingCartBack.exception.NotFoundException
+import com.shoppingcartv3.ShoppingCartBack.model.Product
 import com.shoppingcartv3.ShoppingCartBack.model.Product_Cart
+import com.shoppingcartv3.ShoppingCartBack.model.ShoppinCart
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -55,19 +58,19 @@ class ProductCartBusiness : IProductCartBusiness {
 
     //Delete a Product_Cart on DB
     @Throws(BusinessException::class, NotFoundException::class)
-    override fun remove(idProduct: Long, idCart: Long) {
+    override fun remove(idProductCart: Long) {
         val op: Optional<Product_Cart>
         try {
-            op = productCartRepository!!.findById(idCart)
+            op = productCartRepository!!.findById(idProductCart)
         } catch (e: Exception) {
             throw BusinessException(e.message)
         }
 
         if (!op.isPresent) {
-            throw NotFoundException("Not found product_cart with product id $idProduct and cart id $idCart")
+            throw NotFoundException("Not found product_cart with id $idProductCart")
         } else {
             try {
-                return productCartRepository!!.deleteById(idCart)
+                return productCartRepository!!.deleteById(idProductCart)
             } catch (e: Exception) {
                 throw BusinessException(e.message)
             }

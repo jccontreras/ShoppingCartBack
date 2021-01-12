@@ -74,10 +74,10 @@ class ProductCartRestController {
 
     //Call to DB for delete a Product Cart@CrossOrigin
     @CrossOrigin
-    @DeleteMapping("/{idP}/{idC}")
-    fun delete(@PathVariable("idP") idProduct: Long, @PathVariable("idC") idCart: Long): ResponseEntity<Any> {
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable("id") idProductCart: Long): ResponseEntity<Any> {
         return try {
-            productCartBusiness!!.remove(idProduct, idCart)
+            productCartBusiness!!.remove(idProductCart)
             ResponseEntity(HttpStatus.OK)
         } catch (e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
