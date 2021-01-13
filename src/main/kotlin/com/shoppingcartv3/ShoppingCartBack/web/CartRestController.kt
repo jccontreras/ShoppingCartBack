@@ -49,7 +49,7 @@ class CartRestController {
     //Call to DB for save a Cart
     @CrossOrigin
     @PostMapping("")
-    fun insert(@RequestBody cart: Cart): ResponseEntity<Any> {
+    fun insert(@RequestBody cart: Cart): ResponseEntity<Cart> {
         return try {
             cartBusiness!!.save(cart)
             val responeHeaders = HttpHeaders()
